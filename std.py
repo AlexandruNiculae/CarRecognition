@@ -1,0 +1,3 @@
+
+
+STD_RESOLUTION = (800,450)
