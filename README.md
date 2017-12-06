@@ -1,13 +1,13 @@
 # CarRecognition
 
 
-##Requirements:
+#Requirements:
   - [Pillow][pillow_link]
   - [Tensorflow][tensorflow_link]
   - [Keras][keras_link]
 
 
-##Objective:
+#Objective:
 Compare the differences between Tensorflow and Keras when it comes to Convolutional Networks. Both libraries are used for Machine Learning and other Artificial Intelligence related research.
 The question we are trying to answer is which one is more programmer friendly and which one is more efficient or more powerful.
 
@@ -15,19 +15,21 @@ In order to compare them on a different and much more complicated dataset rather
 
 ***
 
-##Convolutional Networks:
+#Convolutional Networks:
   Here we are comparing the Convolutional Networks provided by each tutorial
-###State of the Art:
-####Tensorflow:
-  **blah blah blah**
-####Keras:
+#State of the Art:
+1.Tensorflow:  
+  **blah blah blah**  
+
+2.Keras:  
   **blah blah blah**
 
 
-###Our Results:
-####Tensorflow:
+#Our Results:
+1.Tensorflow:  
   **blah blah blah**
-####Keras:
+
+2.Keras:  
   **blah blah blah**
 
 
