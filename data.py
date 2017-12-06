@@ -1,14 +1,8 @@
 from PIL import Image
 from std import STD_RESOLUTION
 
-
 import glob
 import os
-
-
-
-
-
 
 class DataFilter:
 
