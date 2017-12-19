@@ -1,13 +1,13 @@
 # CarRecognition      
 
 
-##Requirements:
+## Requirements:
   - [Pillow][pillow_link]
   - [Tensorflow][tensorflow_link]
   - [Keras][keras_link]
 
 
-##Objective:
+## Objective:
 Compare the differences between Tensorflow and Keras when it comes to Convolutional Networks. Both libraries are used for Machine Learning and other Artificial Intelligence related research.
 The question we are trying to answer is which one is more programmer friendly and which one is more efficient or more powerful.
 
@@ -15,10 +15,10 @@ In order to compare them on a different and much more complicated dataset rather
 
 ***
 
-##Convolutional Networks:
+## Convolutional Networks:
   Here we are comparing the Convolutional Networks provided by each tutorial    
 
-##From the tutorial:  
+## From the tutorial:  
 
   Here we want to see what are the results from the guides that each of the frameworks provide.  
 
@@ -29,7 +29,7 @@ In order to compare them on a different and much more complicated dataset rather
   The [Keras guide][k_guide] results in an accuracy of ??? for MNIST.   
 
 
-##Our Results:  
+## Our Results:  
 Here are the results that we obtained using the [Stanford dataset of cars][cars_data] instead of MNIST.
 
 1.Tensorflow:  
@@ -39,7 +39,7 @@ Here are the results that we obtained using the [Stanford dataset of cars][cars_
   **TBC**
 
 
-##Conclusions:  
+## Conclusions:  
 After this experiment these are our conclusions regarding each of the technologies in which we worked.  
 
   [tensorflow_link]:https://www.tensorflow.org/
