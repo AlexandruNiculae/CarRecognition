@@ -26,7 +26,7 @@ In order to compare them on a different and much more complicated dataset rather
   According to [this guide][tf_guide], Tensorflow obtains an average of 99.2% on the MNIST dataset.  
 
 2.Keras:  
-  The [Keras guide][k_guide] results in an accuracy of ??? for MNIST.   
+  The [Keras guide][k_guide] results in an accuracy of over 99% for MNIST.   
 
 
 ## Our Results:  
@@ -37,6 +37,18 @@ Here are the results that we obtained using the [Stanford dataset of cars][cars_
 
 2.Keras:  
   **TBC**
+
+
+---
+# Team Info:
+## To do:
+- [ ] Save dataset in project files
+- [ ] Export .mat to something more `pythonish`
+- [ ] Parse pictures to both nets in the same way
+- [ ] Execute both nets for the same amount of time
+- [ ] Conclude results
+  
+---
 
 
 ## Conclusions:  
