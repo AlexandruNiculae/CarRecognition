@@ -42,12 +42,12 @@ Here are the results that we obtained using the [Stanford dataset of cars][cars_
 ---
 # Team Info:
 ## To do:
-- [ ] Save dataset in project files
-- [ ] Export .mat to something more `pythonish`
-- [ ] Parse pictures to both nets in the same way
+- [x] Save dataset in project files
+- [x] Export .mat to something more `pythonish`
+- [x] Parse pictures to both nets in the same way
 - [ ] Execute both nets for the same amount of time
 - [ ] Conclude results
-  
+
 ---
 
 
