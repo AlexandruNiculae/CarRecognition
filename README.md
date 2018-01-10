@@ -28,15 +28,15 @@ In order to compare them on a different and much more complicated dataset rather
 2.Keras:  
   The [Keras guide][k_guide] results in an accuracy of over 99% for MNIST.   
 
-## State of the art
-  The dataset we used was part of [FGComp 2013][FGCComp2013], in 2 tracks:
-    - In Track 1, bounding boxes will be provided at both training and test time.
-    - In Track 2, bounding boxes will be provided only at training time.
-   The team **Inria-Xerox** used visual features based on dense SIFT and RGB descriptors, spatial coordinates coding, and Fisher Vectors. Then, "one versus all" SVM classifiers are run to predict the category of each image.
-   On track 1 they reach the accuracy of 87.7876 and on track 2 82.7136 accuracy.
-   
-   The **Symbiotic** team used a method in which Fisher-encoded SIFT and color histogram are extracted from the foreground area and each of the detected parts. All features are concatenated together into the final high dimensional representation, which is fed into a linear SVM for classification. 5-fold bagging is used for track 1 in the linear SVM stage.
-   On track 1 they reach the accuracy of 81.0347 and on track 2 77.9878 accuracy.
+## State of the art  
+  The dataset we used was part of [FGComp 2013][FGCComp2013], in 2 tracks:  
+      - In Track 1, bounding boxes will be provided at both training and test time.  
+      - In Track 2, bounding boxes will be provided only at training time.  
+   The team **Inria-Xerox** used visual features based on dense SIFT and RGB descriptors, spatial coordinates coding, and Fisher Vectors. Then, "one versus all" SVM classifiers are run to predict the category of each image.  
+   On track 1 they reach the accuracy of 87.7876 and on track 2 82.7136 accuracy.  
+     
+   The **Symbiotic** team used a method in which Fisher-encoded SIFT and color histogram are extracted from the foreground area and each of the detected parts. All features are concatenated together into the final high dimensional representation, which is fed into a linear SVM for classification. 5-fold bagging is used for track 1 in the linear SVM stage.  
+   On track 1 they reach the accuracy of 81.0347 and on track 2 77.9878 accuracy.  
    
   
 ## Our Results:  
