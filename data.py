@@ -15,8 +15,7 @@ class Data:
 		self.__classes_label = 'class_names'
 
 		self.__max_count = 16185
-		self.__image_count = 1000
-
+		self.__image_count = 3000
 
 	def getData(self):
 		relocated = self.checkIfRelocated()
@@ -100,7 +99,37 @@ class Data:
 		return train,test
 
 
-
-
 	def getTensorflowDataset(self):
-		pass
+		def linefy(array):
+			line = []
+			for row in array:
+				for val in row:
+					line.append(val/255)
+			return line
+		def oneHot(class_count, label):
+			idk = [0 for i in range(class_count)]
+			idk[label] = 0
+			return idk
+
+		train = []
+		train_labels = []
+		test = []
+		test_labels = []
+
+		i = 0
+		for car in self.getData():
+			if not car.isTest():
+				train.append(linefy(car.asArray()))
+				train_labels.append(oneHot(196,car.getLabel()))
+			else:
+				test.append(linefy(car.asArray()))
+				test_labels.append(oneHot(196,car.getLabel()))
+			i+=1
+			print("Images loaded: ",i," out of ",self.__image_count)
+
+		train = np.array(train)
+		train_labels = np.array(train_labels)
+		test = np.array(test)
+		test_labels = np.array(test_labels)
+
+		return (train, train_labels,test,test_labels)
