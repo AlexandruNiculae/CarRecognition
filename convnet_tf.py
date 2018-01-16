@@ -5,7 +5,8 @@ from data import Data
 
 img_width = 300
 img_height = 300
-iterations = 20000
+iterations = 150
+batch_step = 20
 num_classes = 196
 
 def weight_variable(shape):
@@ -30,33 +31,68 @@ x_image = tf.reshape(x, [-1, img_width,img_height, 1])
 
 y_ = tf.placeholder(tf.float32, [None, num_classes])
 
-W_conv1 = weight_variable([5, 5, 1, 32])
+# W_conv1 = weight_variable([5, 5, 1, 32])
+# b_conv1 = bias_variable([32])
+#
+# h_conv1 = tf.nn.relu(conv2d(x_image, W_conv1) + b_conv1)
+# h_pool1 = max_pool_2x2(h_conv1) # 150 x 150
+#
+# W_conv2 = weight_variable([5, 5, 32, 64])
+# b_conv2 = bias_variable([64])
+#
+# h_conv2 = tf.nn.relu(conv2d(h_pool1, W_conv2) + b_conv2)
+# h_pool2 = max_pool_2x2(h_conv2) # 75 x 75
+#
+#
+# W_fc1 = weight_variable([75 * 75 * 64, 1024])
+# b_fc1 = bias_variable([1024])
+#
+# h_pool2_flat = tf.reshape(h_pool2, [-1, 75*75*64])
+# h_fc1 = tf.nn.relu(tf.matmul(h_pool2_flat, W_fc1) + b_fc1)
+#
+# keep_prob = tf.placeholder(tf.float32)
+# h_fc1_drop = tf.nn.dropout(h_fc1, keep_prob)
+#
+#
+# W_fc2 = weight_variable([1024, num_classes])
+# b_fc2 = bias_variable([num_classes])
+#
+# y_conv = tf.matmul(h_fc1_drop, W_fc2) + b_fc2
+
+W_conv1 = weight_variable([3,3,1,32])
 b_conv1 = bias_variable([32])
+h_conv1 = tf.nn.relu(conv2d(x_image,W_conv1) + b_conv1)
 
-h_conv1 = tf.nn.relu(conv2d(x_image, W_conv1) + b_conv1)
-h_pool1 = max_pool_2x2(h_conv1) # 150 x 150
+W_conv2 = weight_variable([3,3,32,32])
+b_conv2 = bias_variable([32])
+h_conv2 = tf.nn.relu(conv2d(h_conv1,W_conv2) + b_conv2)
 
-W_conv2 = weight_variable([5, 5, 32, 64])
-b_conv2 = bias_variable([64])
+h_pool1 = max_pool_2x2(h_conv2) # 150x 150
 
-h_conv2 = tf.nn.relu(conv2d(h_pool1, W_conv2) + b_conv2)
-h_pool2 = max_pool_2x2(h_conv2) # 75 x 75
+keep_prob1 = tf.placeholder(tf.float32)
+h_drop1 = tf.nn.dropout(h_pool1, keep_prob1)
 
+W_conv3 = weight_variable([3,3,32,64])
+b_conv3 = bias_variable([32])
+h_conv3 = tf.nn.relu(conv2d(h_conv1,W_conv2) + b_conv2)
+
+h_pool2 = max_pool_2x2(h_conv3) # 75 x 75
+
+keep_prob2 = tf.placeholder(tf.float32)
+h_drop2 = tf.nn.dropout(h_pool2, keep_prob2)
+
+h_drop2_flat = tf.reshape(h_drop2, [-1, 75*75*64])
 
 W_fc1 = weight_variable([75 * 75 * 64, 1024])
 b_fc1 = bias_variable([1024])
+h_fc1 = tf.nn.relu(tf.matmul(h_drop2_flat, W_fc1) + b_fc1)
 
-h_pool2_flat = tf.reshape(h_pool2, [-1, 75*75*64])
-h_fc1 = tf.nn.relu(tf.matmul(h_pool2_flat, W_fc1) + b_fc1)
-
-keep_prob = tf.placeholder(tf.float32)
-h_fc1_drop = tf.nn.dropout(h_fc1, keep_prob)
-
+keep_prob3 = tf.placeholder(tf.float32)
+h_drop3 = tf.nn.dropout(h_fc1, keep_prob3)
 
 W_fc2 = weight_variable([1024, num_classes])
 b_fc2 = bias_variable([num_classes])
-
-y_conv = tf.matmul(h_fc1_drop, W_fc2) + b_fc2
+y_conv = tf.matmul(h_drop3, W_fc2) + b_fc2
 
 #y = tf.matmul(x, W) + b
 
@@ -93,8 +129,8 @@ with tf.Session() as sess:
 	sess.run(tf.global_variables_initializer())
 	for i in range(iterations):
 		#batch = mnist.train.next_batch(50)
-		batch = nextBatch(50)
-		if i % 100 == 0:
+		batch = nextBatch(batch_step)
+		if i % 2 == 0:
 			train_accuracy = accuracy.eval(feed_dict={
 	  			x: batch[0], y_: batch[1], keep_prob: 1.0})
 			print('step %d, training accuracy %g' % (i, train_accuracy))
