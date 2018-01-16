@@ -73,8 +73,8 @@ keep_prob1 = tf.placeholder(tf.float32)
 h_drop1 = tf.nn.dropout(h_pool1, keep_prob1)
 
 W_conv3 = weight_variable([3,3,32,64])
-b_conv3 = bias_variable([32])
-h_conv3 = tf.nn.relu(conv2d(h_conv1,W_conv2) + b_conv2)
+b_conv3 = bias_variable([64])
+h_conv3 = tf.nn.relu(conv2d(h_drop1,W_conv3) + b_conv3)
 
 h_pool2 = max_pool_2x2(h_conv3) # 75 x 75
 
@@ -132,10 +132,10 @@ with tf.Session() as sess:
 		batch = nextBatch(batch_step)
 		if i % 2 == 0:
 			train_accuracy = accuracy.eval(feed_dict={
-	  			x: batch[0], y_: batch[1], keep_prob: 1.0})
+	  			x: batch[0], y_: batch[1], keep_prob1: 1.0, keep_prob2: 1.0, keep_prob3: 1.0})
 			print('step %d, training accuracy %g' % (i, train_accuracy))
-		train_step.run(feed_dict={x: batch[0], y_: batch[1], keep_prob: 0.5})
+		train_step.run(feed_dict={x: batch[0], y_: batch[1], keep_prob1: 0.5, keep_prob2: 0.5, keep_prob3: 0.5})
 
 	print('test accuracy %g' % accuracy.eval(feed_dict={
 		#x: mnist.test.images, y_: mnist.test.labels, keep_prob: 1.0}))
-		x: test_data[0], y_: test_data[1], keep_prob: 1.0}))
+		x: test_data[0], y_: test_data[1],  keep_prob1: 1.0, keep_prob2: 1.0, keep_prob3: 1.0}))
